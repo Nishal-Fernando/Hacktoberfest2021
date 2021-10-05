@@ -2,88 +2,63 @@
 #include <stdlib.h>
 int main()
 {
-	main:
+
     float x,y;
     char ch;
     char choice;
-    printf("                       =======================================================");
-    printf("\n                      |                      ATM MACHINE                     |");
-    printf("\n                      ========================================================");
-    printf("\nEnter initial amount: ");
-    scanf("%f",&x);
-    printf("\n**********************ATM SERVICES*************************");
-    printf("\nEnter c for credit.\nEnter d for debit.\nEnter b for balance.\n ");
-    scanf("\n%c", &ch);
-    printf("\n************************************************************");
-    switch(ch)
-    {
-    	case 'c':
-    		printf("\n                    Enter credit amount:");
-    		scanf("%f",&y);
-    		x=x+y;
-    		printf("\n                       New Amount = %f",x);
-    		printf("\n                      PRESS b TO GO BACK:");
-    		scanf("\n%c",&choice);
-    		system("cls");
-    		if(choice=='b')
-    		{
-    			goto main;
-			}
-			else
-			{
-			  break;
-		    }
-    	case 'd':
-    		printf("\n                     Enter debit amount:");
-    		scanf("%f",&y);
-    		if(x>=y)
-    		{
-			   x=x-y;
-			   printf("\n                    New amount = %f",x);
-    	    }
-    	    else
-    	    {
-    	    	printf("\n          Insufficient amount in your account");
-			}
-    		printf("\n                      PRESS b TO GO BACK:");
-    		scanf("\n%c",&choice);
-    		system("cls");
-    		if(choice=='b')
-    		{
-    			goto main;
-			}
-			else
-			{
-			  break;
-		    }
-    	case 'b':
-    		printf("\n                Amount in your account is = %f",x);
-    	    printf("\n                       PRESS b TO GO BACK:");
-    		scanf("\n%c",&choice);
-    		system("cls");
-    		if(choice=='b')
-    		{
-    			goto main;
-			}
-			else
-			{
-			  break;
-		    }
-    	default:
-    		printf("\n                    Invalid choice.");
-    		printf("\n                  PRESS b TO GO BACK:");
-    		scanf("\n%c",&choice);
-    		system("cls");
-    		if(choice=='b')
-    		{
-    			goto main;
-			}
-			else
-			{
-			  break;
-		    }
+    main:
+        printf("                       =======================================================");
+        printf("\n                      |                      ATM MACHINE                     |");
+        printf("\n                      ========================================================");
+        printf("\n\n\tEnter initial amount: ");
+        scanf("%f",&x);
+        printf("\n\t**********************ATM SERVICES*************************");
+        printf("\n\n\tEnter c for credit.\n\tEnter d for debit.\n\tEnter b for balance.\n ");
+        scanf("\n\n\t%c", &ch);
+        printf("\n\t************************************************************");
+        switch(ch)
+        {
+            case 'c':
+                printf("\n\tEnter credit amount:");
+                scanf("%f",&y);
+                x=x+y;
+                printf("\n\t\tNew Amount = %.2f",x);
+                goto next;
 
-	}
+            case 'd':
+                printf("\n\tEnter debit amount:");
+                scanf("%f",&y);
+                if(x>=y)
+                {
+                   x=x-y;
+                   printf("\n\t\tNew amount = %.2f",x);
+                }
+                else
+                {
+                    printf("\n\t   Insufficient amount in your account");
+                }
+                goto next;
+            case 'b':
+                printf("\n\t   Amount in your account is = %.2f",x);
+                goto next;
 
-    return 0;
+            default:
+                printf("\n\tInvalid choice.Please Enter Valid Input");
+                goto next;
+
+        }
+        next:
+            printf("\n\n\t************************************************************");
+            printf("\n\tPRESS b TO GO Main menu:");
+            scanf("\n%c",&choice);
+            system("cls");
+            if(choice=='b')
+            {
+                goto main;
+            }
+            else
+            {
+                return 0;
+            }
+
 }
